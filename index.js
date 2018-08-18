@@ -59,6 +59,10 @@ module.exports = function(filename, opts) {
     return compile((function(_this) {
       return function(error, content) {
         var newFile;
+        
+        if(!first)
+          return _this.emit('end');
+        
         newFile = new gutil.File({
           cwd: first.cwd,
           base: first.base,
