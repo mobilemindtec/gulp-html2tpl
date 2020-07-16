@@ -18,6 +18,11 @@ module.exports = function(filename, opts) {
     varName: 'templates',
     precompile: true
   }, opts);
+  
+  if(options.templateSettings){
+    _.templateSettings = options.templateSettings
+  }
+  
   clean = function(string) {
     return string.replace(/\n|\t/gi, '');
   };
