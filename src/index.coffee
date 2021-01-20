@@ -2,6 +2,7 @@ gutil = require 'gulp-util'
 through = require 'through'
 path = require 'path'
 async = require 'async'
+Vinyl = require 'vinyl'
 _ = require 'underscore'
 
 module.exports = (filename, opts) ->
@@ -38,7 +39,7 @@ module.exports = (filename, opts) ->
 	endStream = ->
 		@emit 'end' if templates.length is 0
 		compile (error, content) =>
-			newFile = new gutil.File
+			newFile = new Vinyl
 				cwd: first.cwd
 				base: first.base
 				path: path.join first.base, filename
