@@ -1,4 +1,6 @@
-var async, gutil, path, through, _;
+var async, gutil, path, through, _, Vinyl;
+
+Vinyl = require('vinyl');
 
 gutil = require('gulp-util');
 
@@ -68,7 +70,7 @@ module.exports = function(filename, opts) {
         if(!first)
           return _this.emit('end');
         
-        newFile = new gutil.File({
+        newFile = new Vinyl({
           cwd: first.cwd,
           base: first.base,
           path: path.join(first.base, filename),
